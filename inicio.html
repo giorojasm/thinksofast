@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Think So Fast</title>
+  <link rel="stylesheet" href="inicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="logo">
+      <img src="LOGO.png" alt="Logo Think So Fast">
+      <span>Think So Fast</span>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="inicio.html" class="active">Inicio</a></li>
+        <li><a href="material_de_estudio.html">Material de estudio</a></li>
+        <li><a href="simulacros.html">Simulacros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Prepárate para el Saber 11<br>con confianza</h1>
+      <p>Accede a material, simulacros y herramientas que te ayudarán a fortalecer tus conocimientos y rendir al máximo en tu examen.</p>
+      <a href="simulacros.html" class="btn-primary">Comienza ahora</a>
+    </div>
+    <div class="hero-img">
+      <img src="studying.jpg" alt="Students studying">
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features">
+    <div class="card green fade-in">
+      <h3>¿Qué queremos lograr?</h3>
+      <p>Con esta página pensamos lograr cambios en el rendimiento académico y mejoras en las pruebas del ICFES.</p>
+      <a href="quienes.html" class="btn-secondary">Conoce más</a>
+    </div>
+
+    <div class="card blue fade-in">
+      <h3>How can we help you?</h3>
+      <p>A good website with specific forms for the Saber 11 can help you in several ways.</p>
+      <a href="simulacros.html" class="btn-secondary">Hacer simulacro</a>
+    </div>
+
+    <div class="card purple fade-in">
+      <h3>Key subjects</h3>
+      <p>Using an online platform with practice forms is a great way to prepare for the Saber 11 exam.</p>
+      <a href="material de estudio.html" class="btn-secondary">Ver material</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== MOTIVATIONAL SECTION ===== -->
+  <section class="motivation">
+    <h2>“El conocimiento no se improvisa, se entrena.”</h2>
+    <p>Prepárate con Think So Fast y supera tus propios límites.</p>
+  </section>
+
+  <!-- ===== CALL TO ACTION ===== -->
+  <section class="hero small-hero">
+    <h2>¡Da el siguiente paso!</h2>
+    <p>Únete a cientos de estudiantes que están mejorando sus resultados con Think So Fast. Practica, aprende y supera tus límites.</p>
+    <a href="simulacros.html" class="btn-primary">Comienza tus simulacros</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGO.png" alt="Think So Fast" width="40">
+        <span>Think So Fast</span>
+      </div>
+      <p>We help students improve their academic performance and achieve their goals.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms and Conditions</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><img src="facebook.png" alt="Facebook" width="24"></a>
+        <a href="#"><img src="X.png" alt="X" width="24"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram" width="24"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING BUTTON ===== -->
+  <a href="simulacros.html" class="floating-btn">🎯 Simulacro rápido</a>
+
+  <!-- ===== BACKGROUND PARTICLES ===== -->
+  <canvas id="backgroundParticles"></canvas>
+
+  <!-- ===== SCRIPT ANIMACIÓN ===== -->
+  <script>
+    // Fade-in para tarjetas
+    const cards = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Partículas de fondo
+    const c = document.getElementById("backgroundParticles");
+    const ctx = c.getContext("2d");
+    c.width = innerWidth;
+    c.height = innerHeight;
+    const particles = Array.from({ length: 30 }, () => ({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 0.5 + 0.2
+    }));
+    function animate() {
+      ctx.clearRect(0,0,c.width,c.height);
+      ctx.fillStyle = "rgba(255,255,255,0.1)";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.d;
+        if(p.y < 0) p.y = c.height;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Think So Fast </title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Think So Fast</h1>
+    <nav id="nav">
+      <a href="#" data-view="inicio">Inicio</a>
+      <a href="../portal/material_de_estudio.html" data-view="documentos" class="auth-only">Documentos</a>
+      <a href="#" data-view="perfil" class="auth-only">Mi perfil</a>
+      <button id="btnLogin" class="btn">Iniciar sesión</button>
+      <button id="btnLogout" class="btn auth-only">Salir</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-inicio" class="view active">
+      <h2>Bienvenido</h2>
+      <p>Este es el portal. Inicia sesión para ver los recursos y simulacros. Empieza ya con think so fast.</p>
+    </section>
+
+    <section id="view-documentos" class="view">
+      <h2>Documentos (Privado)</h2>
+      <ul id="listaDocs">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </section>
+
+    <section id="view-perfil" class="view">
+      <h2>Mi Perfil</h2>
+      <p id="perfilInfo"></p>
+    </section>
+  </main>
+
+  <dialog id="loginModal">
+    <form method="dialog" class="card">
+      <h3>Iniciar sesión (demo)</h3>
+      <label>Correo <input id="email" type="email" required></label>
+      <label>Contraseña <input id="pass" type="password" required></label>
+      <menu>
+        <button value="cancel">Cancelar</button>
+        <button id="doLogin" value="ok">Entrar</button>
+      </menu>
+      <small>Demo local: no valida en servidor.</small>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

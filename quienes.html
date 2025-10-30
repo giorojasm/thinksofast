@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiénes Somos - Think So Fast</title>
+  <link rel="stylesheet" href="inicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* === ESTILOS ADICIONALES === */
+    .founder-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .founder-card img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      border: 3px solid rgba(255,255,255,0.2);
+    }
+
+    .founder-info {
+      max-width: 300px;
+    }
+
+    .botones-quienes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 25px 0;
+    }
+
+    .botones-quienes button {
+      width: 80%;
+      max-width: 300px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .contenedor-imagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+      flex-direction: column;
+    }
+
+    .contenedor-imagen img {
+      display: none;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .contenedor-imagen img.visible {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="logo">
+      <img src="LOGO.png" alt="Logo Think So Fast">
+      <span>Think So Fast</span>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="evidencias.html">Evidencias</a></li>
+        <li><a href="quienes_somos.html" class="active">Quiénes Somos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero small-hero">
+    <h1>Quiénes Somos</h1>
+    <p>Conoce a los creadores de Think So Fast, nuestros objetivos y la visión detrás del proyecto.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== OBJETIVOS ===== -->
+  <section class="features">
+    <div class="card blue fade-in">
+      <h3>🎯 Objetivo General</h3>
+      <p>Diseñar una solución tecnológica que apoye la preparación de los estudiantes de Educación Media Integral (EMI) para la prueba de estado, mejorando su rendimiento y familiarizándolos con el examen.</p>
+    </div>
+
+    <div class="card green fade-in">
+      <h3>📌 Objetivos Específicos</h3>
+      <ul style="text-align:left; margin-left:20px;">
+        <li>Diagnosticar el estado actual de los estudiantes de educación media.</li>
+        <li>Formular una solución tecnológica que facilite su preparación.</li>
+        <li>Evaluar la viabilidad de dicha solución frente a las necesidades de los estudiantes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== FUNDADORES ===== -->
+  <section class="features">
+    <div class="card purple fade-in founder-card">
+      <img src="founder1.jpg" alt="Foto fundador Neyxon">
+      <div class="founder-info">
+        <h3>NEYXON RENÉ FANEYTH TOVAR</h3>
+        <p><strong>Contacto:</strong> IG: 0x.nexx</p>
+      </div>
+    </div>
+
+    <div class="card green fade-in founder-card">
+      <img src="founder2.jpg" alt="Foto fundador Iván">
+      <div class="founder-info">
+        <h3>IVAN DAVID GAONA ARISTIZABAL</h3>
+        <p><strong>Contacto:</strong> IG: ivan_cho_2007</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== DESCRIPCIÓN PERSONAL ===== -->
+  <section class="features">
+    <div class="card blue fade-in">
+      <h3>Sobre Neyxon</h3>
+      <p>Soy una persona responsable, capaz de lograr lo que se propone. Me gusta trabajar en equipo porque es una forma de escuchar y aprender distintas maneras de razonar para llegar a un mismo fin. Valoro la lealtad, el respeto y la discreción.</p>
+    </div>
+
+    <div class="card green fade-in">
+      <h3>Sobre Iván</h3>
+      <p>Soy un estudiante que quiso crear un portal web a través de una solución tecnológica para mejorar el desempeño académico de los estudiantes, especialmente aquellos que se preparan para la prueba Saber 11.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== GALERÍA DE IMÁGENES (PREGUNTA, MISIÓN, VISIÓN...) ===== -->
+  <section class="features">
+  <div class="card purple no-hover fade-in">
+    <h3>📄 Documentos del Proyecto</h3>
+    <div class="botones-quienes">
+      <button class="btn-evidencia" onclick="mostrarImagen(1)">Pregunta problema</button>
+      <button class="btn-evidencia" onclick="mostrarImagen(2)">Objetivo general</button>
+      <button class="btn-evidencia" onclick="mostrarImagen(3)">Objetivo específico</button>
+      <button class="btn-evidencia" onclick="mostrarImagen(4)">Misión</button>
+      <button class="btn-evidencia" onclick="mostrarImagen(5)">Visión</button>
+    </div>
+
+    <div id="contenedor" class="contenedor-imagen">
+      <img id="img1" src="pregunta_problema.png" alt="Pregunta problema">
+      <img id="img2" src="objetivo_general.png" alt="Objetivo general">
+      <img id="img3" src="objetivo_especifico.png" alt="Objetivo específico">
+      <img id="img4" src="mision.png" alt="Misión">
+      <img id="img5" src="vision.png" alt="Visión">
+    </div>
+  </div>
+</section>
+
+
+
+
+  <div class="divider"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGO.png" alt="Think So Fast" width="40">
+        <span>Think So Fast</span>
+      </div>
+      <p>We help students improve their academic performance and achieve their goals.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms and Conditions</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><img src="facebook.png" alt="Facebook" width="24"></a>
+        <a href="#"><img src="X.png" alt="X" width="24"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram" width="24"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÓN FLOTANTE ===== -->
+  <a href="evidencias.html" class="floating-btn">🎯 Ir a Evidencias</a>
+
+  <!-- ===== BACKGROUND PARTICLES ===== -->
+  <canvas id="backgroundParticles"></canvas>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Mostrar imágenes de documentos
+    function mostrarImagen(num) {
+    const imgs = document.querySelectorAll("#contenedor img");
+    const target = document.getElementById("img" + num);
+
+    // Si ya está visible, ocultarla
+    if (target.classList.contains("visible")) {
+      target.classList.remove("visible");
+      return;
+    }
+
+    // Oculta todas y muestra solo la seleccionada
+    imgs.forEach(img => img.classList.remove("visible"));
+    target.classList.add("visible");
+  }
+
+    // Fade-in animaciones
+    const cards = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Fondo animado
+    const c = document.getElementById("backgroundParticles");
+    const ctx = c.getContext("2d");
+    c.width = innerWidth;
+    c.height = innerHeight;
+    const particles = Array.from({ length: 30 }, () => ({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 0.5 + 0.2
+    }));
+    function animate() {
+      ctx.clearRect(0,0,c.width,c.height);
+      ctx.fillStyle = "rgba(255,255,255,0.1)";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.d;
+        if(p.y < 0) p.y = c.height;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+</html>

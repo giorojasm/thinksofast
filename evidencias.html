@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evidencias - Think So Fast</title>
+  <link rel="stylesheet" href="inicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==== ESTILO DE BOTONES Y CONTENEDOR ==== */
+    .botones-evidencias {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin: 25px 0;
+    }
+
+    .botones-evidencias button {
+      width: 80%;
+      max-width: 300px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .contenedor-imagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      flex-direction: column;
+    }
+
+    .contenedor-imagen img {
+      display: none;
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      animation: fadeIn 0.6s ease;
+    }
+
+    .contenedor-imagen img.visible {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="logo">
+      <img src="LOGO.png" alt="Logo Think So Fast">
+      <span>Think So Fast</span>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="evidencias.html">Evidencias</a></li>
+        <li><a href="quienes.html" class="active">Quienes Somos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero small-hero">
+    <h1>Evidencias</h1>
+    <p>Explora los avances y resultados obtenidos durante el proceso de preparación.  
+       Selecciona una evidencia para visualizarla.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <section class="features">
+    <div class="card purple no-hover fade-in">
+      <h3>Evidencias del proyecto</h3>
+      <p>Selecciona una opción para desplegar la imagen correspondiente.</p>
+      
+      <div class="card purple no-hover fade-in">
+        <button class="btn-secondary" onclick="mostrarImagen(1)">Cronograma</button>
+        <button class="btn-secondary" onclick="mostrarImagen(2)">Resultado antes del ICFES</button>
+        <button class="btn-secondary" onclick="mostrarImagen(3)">Resultado después del ICFES</button>
+        <button class="btn-secondary" onclick="mostrarImagen(4)">Puntuación del ICFES</button>
+        <button class="btn-secondary" onclick="mostrarImagen(5)">Puntuación más alta del curso</button>
+      </div>
+
+      <div id="contenedor" class="contenedor-imagen fade-in">
+        <img id="img1" src="cronograma.png" alt="Cronograma">
+        <img id="img2" src="resultado_antes.png" alt="Resultado antes del ICFES">
+        <img id="img3" src="resultado_despues.png" alt="Resultado después del ICFES">
+        <img id="img4" src="puntuacion_icfes.png" alt="Puntuación del ICFES">
+        <img id="img5" src="puntuacion_alta.png" alt="Puntuación más alta del curso">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== MOTIVATION ===== -->
+  <section class="motivation">
+    <h2>“El esfuerzo constante deja huellas visibles.”</h2>
+    <p>Estas evidencias reflejan el crecimiento y compromiso de los estudiantes durante su proceso de preparación.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGO.png" alt="Think So Fast" width="40">
+        <span>Think So Fast</span>
+      </div>
+      <p>We help students improve their academic performance and achieve their goals.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms and Conditions</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><img src="facebook.png" alt="Facebook" width="24"></a>
+        <a href="#"><img src="X.png" alt="X" width="24"></a>
+        <a href="#"><img src="instagram.png" alt="Instagram" width="24"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÓN FLOTANTE ===== -->
+  <a href="quienes.html" class="floating-btn">🧠 Quienes Somos</a>
+
+  <!-- ===== BACKGROUND PARTICLES ===== -->
+  <canvas id="backgroundParticles"></canvas>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Mostrar/Ocultar imágenes según el botón presionado
+    function mostrarImagen(num) {
+      const imgs = document.querySelectorAll(".contenedor-imagen img");
+      imgs.forEach(img => img.classList.remove("visible"));
+      const target = document.getElementById("img" + num);
+      if (target) target.classList.add("visible");
+    }
+
+    // Fade-in animaciones
+    const cards = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Fondo animado
+    const c = document.getElementById("backgroundParticles");
+    const ctx = c.getContext("2d");
+    c.width = innerWidth;
+    c.height = innerHeight;
+    const particles = Array.from({ length: 30 }, () => ({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 0.5 + 0.2
+    }));
+    function animate() {
+      ctx.clearRect(0,0,c.width,c.height);
+      ctx.fillStyle = "rgba(255,255,255,0.1)";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.d;
+        if(p.y < 0) p.y = c.height;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    function mostrarImagen(num) {
+    const imgs = document.querySelectorAll("#contenedor img");
+    const target = document.getElementById("img" + num);
+
+    // Si la imagen está visible, la ocultamos
+    if (target.classList.contains("visible")) {
+      target.classList.remove("visible");
+      return;
+    }
+
+    // Oculta todas y muestra solo la seleccionada
+    imgs.forEach(img => img.classList.remove("visible"));
+    target.classList.add("visible");
+  }
+  </script>
+
+</body>
+</html>
